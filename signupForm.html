@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCPI - Sign Up</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="Stylesheet.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #1F235B 0%, #3A4B8D 100%);
+        }
+        body {
+            background: var(--primary-gradient);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        .signup-header {
+            border-radius: 20px 20px 0 0;
+            background: var(--primary-gradient);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .signup-container {
+            max-width: 500px;
+            width: 100%;
+        }
+        .signup-header img {
+            max-width: 100px;
+            margin-bottom: 1rem;
+        }
+        .whole-body {
+            transition: transform 0.3s ease;
+            box-shadow: -2px 2px 14px 0px rgba(173,173,173,0.75);
+            border-radius: 20px;
+        }
+        
+        .whole-body:hover {
+            transform: scale(1.05);
+        }
+
+        .signup-body {
+            padding: 1.5rem;
+            border-radius: 0 0 20px 20px;
+            background-color: white;
+        }
+
+        @media (max-width: 576px) {
+            .signup-container {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+            .signup-header {
+                padding: 1rem;
+            }
+            .signup-header img {
+                max-width: 80px;
+                margin-bottom: 0.5rem;
+            }
+            .signup-body {
+                padding: 1rem;
+            }
+            .form-control, 
+            .form-select, 
+            .btn {
+                font-size: 16px;
+                padding: 0.75rem;
+            }
+            h2 {
+                font-size: 1.25rem;
+            }
+        }
+
+        .form-control, .form-select {
+            padding: 0.75rem;
+        }
+        .input-group-text {
+            background-color: #f8f9fa;
+        }
+        /* Minimal change to trigger edit */
+        @media (max-width: 768px) {
+            .signup-container { margin-top: 0; }
+        }
+    </style>
+</head>
+<body class="d-flex align-items-center justify-content-center">
+    <div class="signup-container container">
+        <div class="whole-body">
+            <div class="signup-header">
+                <img src="images/mcpilogotransparent.png" alt="MCPI Logo">
+                <h2 class="mb-0 text-white"><strong><i>Create Your Account</i></strong></h2>
+            </div>
+            <div class="signup-body">
+                <form id="signupForm">
+                    <div class="row">
+                        <div class="col-12 col-md-6 mb-3">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="fas fa-user text-primary"></i></span>
+                                <input type="text" class="form-control" id="firstName" required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 mb-3">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="fas fa-user text-primary"></i></span>
+                                <input type="text" class="form-control" id="lastName" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">School Email Address</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light"><i class="fas fa-envelope text-primary"></i></span>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your school email" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light"><i class="fas fa-lock text-primary"></i></span>
+                            <input type="password" class="form-control" id="password" placeholder="Create a strong password" required>
+                            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <small class="form-text text-muted">Password must be at least 8 characters long</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light"><i class="fas fa-lock text-primary"></i></span>
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="Repeat your password" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="grade" class="form-label">Grade Level</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light"><i class="fas fa-graduation-cap text-primary"></i></span>
+                            <select class="form-select" id="grade" required>
+                                <option value="">Select your grade level</option>
+                                <option value="Elementary">Elementary School</option>
+                                <option value="JuniorHighSchool">Junior High School</option>
+                                <option value="SeniorHighSchool">Senior High School</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="termsCheck" required>
+                        <label class="form-check-label" for="termsCheck">I agree to the Terms and Conditions</label>
+                    </div>
+
+                    <div id="errorMessage" class="text-danger mb-3 text-center"></div>
+
+                    <button type="submit" id="signupButton" class="btn btn-primary w-100">
+                        <i class="fas fa-user-plus me-2"></i>Sign Up
+                    </button>
+
+                    <div class="text-center mt-3">
+                        <p class="mb-2">
+                            Already have an account? 
+                            <a href="loginForm.html" class="text-primary fw-bold">Log In</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { 
+            getAuth, 
+            createUserWithEmailAndPassword
+        } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+        import { getFirestore, doc, setDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+        // Advanced Error Tracing Mechanism
+        window.addEventListener('error', function(event) {
+            console.error('GLOBAL ERROR CAUGHT:', {
+                message: event.message,
+                filename: event.filename,
+                lineno: event.lineno,
+                colno: event.colno,
+                error: event.error
+            });
+        });
+
+        window.addEventListener('unhandledrejection', function(event) {
+            console.error('UNHANDLED PROMISE REJECTION:', {
+                reason: event.reason,
+                promise: event.promise
+            });
+        });
+
+        // Comprehensive Debugging Decorator
+        function debugDecorator(fn) {
+            return async function(...args) {
+                console.group(`🔍 Debugging: ${fn.name}`);
+                console.log('Arguments:', args);
+                
+                try {
+                    const result = await fn.apply(this, args);
+                    console.log('Result:', result);
+                    console.groupEnd();
+                    return result;
+                } catch (error) {
+                    console.error('Error Details:', {
+                        name: error.name,
+                        message: error.message,
+                        stack: error.stack,
+                        code: error.code
+                    });
+                    console.groupEnd();
+                    throw error;
+                }
+            };
+        }
+
+        // Comprehensive Null Safety Function
+        function safelyProcessValue(value, processFn) {
+            if (value === null || value === undefined) {
+                console.warn('Attempted to process null or undefined value');
+                return null;
+            }
+
+            try {
+                return processFn(value);
+            } catch (error) {
+                console.error('Value Processing Error:', {
+                    originalValue: value,
+                    error: error.message
+                });
+                return null;
+            }
+        }
+
+        // Enhanced Form Validation with Detailed Logging
+        function validateFormData() {
+            const formFields = [
+                'firstName', 'lastName', 'email', 
+                'password', 'confirmPassword', 
+                'grade', 'termsCheck'
+            ];
+
+            const validationResults = {};
+
+            formFields.forEach(fieldId => {
+                const element = document.getElementById(fieldId);
+                
+                if (!element) {
+                    console.error(`❌ CRITICAL: Element '${fieldId}' not found in DOM`);
+                    validationResults[fieldId] = { 
+                        exists: false, 
+                        error: 'Element not found' 
+                    };
+                    return;
+                }
+
+                let value;
+                switch (element.type) {
+                    case 'checkbox':
+                        value = element.checked;
+                        break;
+                    case 'select-one':
+                        value = element.value;
+                        break;
+                    default:
+                        value = element.value;
+                }
+
+                // Detailed value processing and logging
+                validationResults[fieldId] = {
+                    exists: true,
+                    value: value,
+                    type: element.type,
+                    length: safelyProcessValue(value, v => String(v).length),
+                    processedValue: safelyProcessValue(value, v => {
+                        try {
+                            return v.split ? v.split('') : v;
+                        } catch (error) {
+                            console.error(`Split error for ${fieldId}:`, error);
+                            return null;
+                        }
+                    })
+                };
+            });
+
+            console.group('🔬 Form Validation Detailed Report');
+            console.table(validationResults);
+            console.groupEnd();
+
+            return validationResults;
+        }
+
+        // Network Request Interceptor
+        function setupNetworkInterceptor() {
+            const originalFetch = window.fetch;
+            window.fetch = function(input, init) {
+                console.log('Network Request:', {
+                    url: input,
+                    method: init?.method || 'GET',
+                    headers: init?.headers
+                });
+
+                return originalFetch(input, init)
+                    .catch(error => {
+                        console.error('Network Request Failed:', {
+                            url: input,
+                            error: error.message
+                        });
+                        throw error;
+                    });
+            };
+        }
+
+        // Setup network interceptor
+        setupNetworkInterceptor();
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDJPSBZyfLevRlMTyEQAVJKBe0qc_cyF8M",
+            authDomain: "databasemcpipe.firebaseapp.com",
+            projectId: "databasemcpipe",
+            storageBucket: "databasemcpipe.firebasestorage.app",
+            messagingSenderId: "1031692818139",
+            appId: "1:1031692818139:web:b32cb75968d54ae0379efe",
+            measurementId: "G-XDC8K40HGG"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const firestore = getFirestore(app);
+
+        // Comprehensive Debugging Function
+        function debugFormData() {
+            const debugElements = [
+                'firstName', 'lastName', 'email', 
+                'password', 'confirmPassword', 
+                'grade', 'termsCheck', 
+                'signupForm', 'signupButton', 'errorMessage'
+            ];
+
+            console.group('Form Data Debugging');
+            debugElements.forEach(elementId => {
+                const element = document.getElementById(elementId);
+                console.log(`Element '${elementId}':`, {
+                    exists: !!element,
+                    type: element ? element.type : 'N/A',
+                    value: element ? 
+                        (element.type === 'checkbox' ? element.checked : element.value) : 
+                        'N/A',
+                    tagName: element ? element.tagName : 'N/A'
+                });
+            });
+            console.groupEnd();
+        }
+
+        // Enhanced Error Logging Function
+        async function safeCreateUserWithEmailAndPassword(auth, email, password) {
+            try {
+                console.group('User Creation');
+                console.log('Creating user with email:', email);
+                debugFormData();  // Log form data before execution
+                
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                
+                console.log('User Creation Result:', userCredential);
+                console.groupEnd();
+                return userCredential;
+            } catch (error) {
+                console.error('User Creation Error:', {
+                    message: error.message,
+                    stack: error.stack,
+                    name: error.name,
+                    code: error.code
+                });
+                
+                const errorMessageElement = document.getElementById('errorMessage');
+                if (errorMessageElement) {
+                    let userFriendlyMessage = 'Registration failed. ';
+                    switch (error.code) {
+                        case 'auth/email-already-in-use':
+                            userFriendlyMessage += 'Email is already registered.';
+                            break;
+                        case 'auth/invalid-email':
+                            userFriendlyMessage += 'Invalid email format.';
+                            break;
+                        case 'auth/weak-password':
+                            userFriendlyMessage += 'Password is too weak.';
+                            break;
+                        default:
+                            userFriendlyMessage += error.message;
+                    }
+                    
+                    errorMessageElement.textContent = userFriendlyMessage;
+                    errorMessageElement.style.display = 'block';
+                }
+                
+                throw error;
+            }
+        }
+
+        // Enhanced Firestore Document Setting Function
+        async function safeSaveUserDocument(firestore, userId, userData) {
+            try {
+                console.group('User Document Creation');
+                console.log('Saving user document:', { userId, userData });
+                
+                const userDocRef = doc(firestore, 'users', userId);
+                const result = await setDoc(userDocRef, {
+                    ...userData,
+                    createdAt: serverTimestamp(),
+                    lastSignInTime: new Date().toISOString()
+                }, { merge: true });
+                
+                console.log('Document Save Result:', result);
+                console.groupEnd();
+                return result;
+            } catch (error) {
+                console.error('Document Save Error:', {
+                    message: error.message,
+                    stack: error.stack,
+                    name: error.name,
+                    code: error.code
+                });
+                
+                const errorMessageElement = document.getElementById('errorMessage');
+                if (errorMessageElement) {
+                    errorMessageElement.textContent = `Database error: ${error.message}`;
+                    errorMessageElement.style.display = 'block';
+                }
+                
+                throw error;
+            }
+        }
+
+        // Comprehensive Null Safety Wrapper
+        function safeSplit(value, delimiter = '') {
+            if (value === null || value === undefined) {
+                console.error('Attempted to split null or undefined value');
+                return [];
+            }
+            
+            // Ensure value is converted to string before splitting
+            const stringValue = String(value);
+            
+            try {
+                return stringValue.split(delimiter);
+            } catch (error) {
+                console.error('Split operation failed:', {
+                    value: stringValue,
+                    delimiter,
+                    error: error.message
+                });
+                return [];
+            }
+        }
+
+        // Wrap critical functions with debugging
+        const debuggedCreateUserWithEmailAndPassword = debugDecorator(createUserWithEmailAndPassword);
+        const debuggedSetDoc = debugDecorator(setDoc);
+
+        // Modify form submission to include comprehensive validation
+        const signupForm = document.getElementById('signupForm');
+        const submitButton = document.getElementById('signupButton');
+        const errorMessageElement = document.getElementById('errorMessage');
+
+        // Validate that all required elements exist
+        if (!signupForm || !submitButton || !errorMessageElement) {
+            console.error('One or more required form elements are missing');
+            
+            // Disable submit button if it exists
+            if (submitButton) {
+                submitButton.disabled = true;
+            }
+            
+            // Show error message if element exists
+            if (errorMessageElement) {
+                errorMessageElement.textContent = 'Form initialization error. Please reload the page.';
+                errorMessageElement.style.display = 'block';
+            }
+            
+            // Throw an error instead of returning false
+            throw new Error('Form initialization failed');
+        }
+
+        signupForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            console.group('📝 Form Submission Process');
+            console.time('Form Submission Duration');
+
+            try {
+                // Comprehensive form validation
+                const validationResults = validateFormData();
+
+                // Detailed validation checks
+                const validationErrors = Object.entries(validationResults)
+                    .filter(([_, result]) => 
+                        !result.exists || 
+                        (result.length !== undefined && result.length === 0)
+                    )
+                    .map(([field, _]) => field);
+
+                if (validationErrors.length > 0) {
+                    console.error('❌ Validation Failed', {
+                        failedFields: validationErrors
+                    });
+                    
+                    errorMessageElement.textContent = `Please check these fields: ${validationErrors.join(', ')}`;
+                    errorMessageElement.style.display = 'block';
+                    return;
+                }
+
+                // Reset error message
+                errorMessageElement.textContent = '';
+                errorMessageElement.style.display = 'none';
+                errorMessageElement.classList.remove('alert-success');
+                errorMessageElement.classList.add('alert-danger');
+
+                // Disable submit button during process
+                submitButton.innerHTML = 'Processing...';
+                submitButton.disabled = true;
+
+                // Collect form data
+                const firstName = document.getElementById('firstName').value.trim();
+                const lastName = document.getElementById('lastName').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                const grade = document.getElementById('grade').value;
+                const termsChecked = document.getElementById('termsCheck').checked;
+
+                // Comprehensive validation
+                if (!validateInput()) {
+                    submitButton.innerHTML = 'Sign Up';
+                    submitButton.disabled = false;
+                    return;
+                }
+
+                try {
+                    // Create user in Firebase Authentication
+                    const userCredential = await debuggedCreateUserWithEmailAndPassword(auth, email, password);
+                    const user = userCredential.user;
+
+                    // Verify user authentication
+                    if (!user) {
+                        throw new Error('User authentication failed');
+                    }
+
+                    // Create user document in Firestore
+                    await debuggedSetDoc(doc(firestore, 'users', user.uid), {
+                        uid: user.uid,
+                        firstName: firstName,
+                        lastName: lastName,
+                        email: email,
+                        grade: grade,
+                        signupMethod: 'email-password'
+                    });
+
+                    // Success handling
+                    errorMessageElement.textContent = 'Registration successful! Redirecting...';
+                    errorMessageElement.classList.remove('alert-danger');
+                    errorMessageElement.classList.add('alert-success');
+                    errorMessageElement.style.display = 'block';
+
+                    // Redirect after a short delay
+                    setTimeout(() => {
+                        window.location.href = 'loginForm.html';
+                    }, 2000);
+
+                } catch (error) {
+                    console.error('Signup Process Error:', error);
+                    
+                    // Additional error handling if needed
+                    errorMessageElement.textContent = `Registration failed: ${error.message}`;
+                    errorMessageElement.style.display = 'block';
+                } finally {
+                    // Reset submit button
+                    submitButton.innerHTML = 'Sign Up';
+                    submitButton.disabled = false;
+                }
+            } catch (error) {
+                console.error('❌ Form Submission Error:', error);
+                errorMessageElement.textContent = `Unexpected error: ${error.message}`;
+                errorMessageElement.style.display = 'block';
+            } finally {
+                console.timeEnd('Form Submission Duration');
+                console.groupEnd();
+            }
+        });
+
+        // Comprehensive input validation function
+        function validateInput() {
+            console.group('Input Validation');
+            
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const grade = document.getElementById('grade').value;
+            const termsChecked = document.getElementById('termsCheck').checked;
+
+            console.log('Validation Input:', {
+                firstName, 
+                lastName, 
+                email, 
+                passwordLength: password.length,
+                grade, 
+                termsChecked
+            });
+
+            // Add password match validation
+            if (password !== confirmPassword) {
+                console.warn('Password Validation Failed: Passwords do not match');
+                errorMessageElement.textContent = 'Passwords do not match';
+                errorMessageElement.style.display = 'block';
+                console.groupEnd();
+                return false;
+            }
+
+            // Validation checks
+            const validations = [
+                { 
+                    condition: firstName.length >= 2, 
+                    message: 'First name must be at least 2 characters long' 
+                },
+                { 
+                    condition: lastName.length >= 2, 
+                    message: 'Last name must be at least 2 characters long' 
+                },
+                { 
+                    condition: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email), 
+                    message: 'Invalid email format' 
+                },
+                { 
+                    condition: password.length >= 8, 
+                    message: 'Password must be at least 8 characters long' 
+                },
+                { 
+                    condition: grade && grade.trim() !== '', 
+                    message: 'Grade selection is required' 
+                },
+                {
+                    condition: termsChecked,
+                    message: 'You must agree to the Terms and Conditions'
+                }
+            ];
+
+            // Check validations
+            for (const validation of validations) {
+                if (!validation.condition) {
+                    console.warn(`Validation Failed: ${validation.message}`);
+                    errorMessageElement.textContent = validation.message;
+                    errorMessageElement.style.display = 'block';
+                    console.groupEnd();
+                    return false;
+                }
+            }
+
+            console.log('All Validations Passed');
+            console.groupEnd();
+            return true;
+        }
+
+        // Password Toggle Functionality
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const togglePasswordBtn = document.getElementById('togglePassword');
+        
+        togglePasswordBtn.addEventListener('click', () => {
+            const type = passwordInput.type === 'password' ? 'text' : 'password';
+            passwordInput.type = type;
+            confirmPasswordInput.type = type;
+            togglePasswordBtn.querySelector('i').classList.toggle('fa-eye');
+            togglePasswordBtn.querySelector('i').classList.toggle('fa-eye-slash');
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "rules": {
+    "users": {
+      ".read": "auth != null",
+      ".write": "!exists(/users/$uid) || $uid === auth.uid"
+    },
+    "public": {
+      ".read": true,
+      ".write": false
+    }
+  }
+}
